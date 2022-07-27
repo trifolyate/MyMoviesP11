@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etTitle, etGenre, etYear;
     Spinner spnRating;
     Button btnInsert, btnShowList;
+    String movieRating;
 //    ListView lvTest;
 //    ArrayList<Movies> alMovieList;
 //    CustomAdapter caMovie;
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         populateData();
 
+
         btnShowList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 String movietitle = etTitle.getText().toString();
                 String moviegenre = etGenre.getText().toString();
                 int year = Integer.parseInt(etYear.getText().toString());
-                String movierating = "TEST";
+                String movieratingfinal = movieRating;
                 DBHelper dbh = new DBHelper(MainActivity.this);
-                long inserted_id =dbh.insertMovie(movietitle,moviegenre,year,movierating);
+                long inserted_id =dbh.insertMovie(movietitle,moviegenre,year,movieratingfinal);
                 if (inserted_id != -1) {
 //                    alMovieList.clear();
 //                    alMovieList.addAll(dbh.getAllMovies());
@@ -76,6 +79,44 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Insert not successful",
                             Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        spnRating.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        String spinnerItems1 = spnRating.getSelectedItem().toString();
+                        movieRating += spinnerItems1;
+                        break;
+                    case 1:
+                        String spinnerItems2 = spnRating.getSelectedItem().toString();
+                        movieRating += spinnerItems2;
+                        break;
+                    case 2:
+                        String spinnerItems3 = spnRating.getSelectedItem().toString();
+                        movieRating += spinnerItems3;
+                        break;
+                    case 3:
+                        String spinnerItems4 = spnRating.getSelectedItem().toString();
+                        movieRating += spinnerItems4;
+                        break;
+                    case 4:
+                        String spinnerItems5 = spnRating.getSelectedItem().toString();
+                        movieRating += spinnerItems5;
+                        break;
+                    case 5:
+                        String spinnerItems6 = spnRating.getSelectedItem().toString();
+                        movieRating += spinnerItems6;
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
