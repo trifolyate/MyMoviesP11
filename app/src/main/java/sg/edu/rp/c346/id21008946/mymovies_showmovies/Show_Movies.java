@@ -2,7 +2,11 @@ package sg.edu.rp.c346.id21008946.mymovies_showmovies;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Movie;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -14,6 +18,7 @@ public class Show_Movies extends AppCompatActivity {
     Button btnShowAllPG13;
     CustomAdapter caMovie;
     ArrayList<Movies> alMovieList;
+    Movies data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,20 +35,17 @@ public class Show_Movies extends AppCompatActivity {
         alMovieList.addAll(dbh.getAllMovies());
         caMovie.notifyDataSetChanged();
 
-
-
-
+        lvMovies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int
+                    position, long identity) {
+                Movies data = alMovieList.get(position);
+                Intent i = new Intent(Show_Movies.this,
+                        ModifyPage.class);
+                i.putExtra("data", data);
+                startActivity(i);
+            }
+        });
 
     }
 }
-//lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//@Override
-//public void onItemClick(AdapterView<?> parent, View view, int
-//        position, long identity) {
-//        Song data = als.get(position);
-//        Intent i = new Intent(SongListActivity.this,
-//        SongEditPage.class);
-//        i.putExtra("data", data);
-//        startActivity(i);
-//        }
-//        });
