@@ -1,6 +1,8 @@
 package sg.edu.rp.c346.id21008946.mymovies_showmovies;
 
-public class Movies {
+import java.io.Serializable;
+
+public class Movies implements Serializable {
     private int movieid;
     private String movieTitle;
     private String moviegenre;
