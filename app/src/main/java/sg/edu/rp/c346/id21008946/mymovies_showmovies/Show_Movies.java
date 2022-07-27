@@ -36,3 +36,14 @@ public class Show_Movies extends AppCompatActivity {
 
     }
 }
+//lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//@Override
+//public void onItemClick(AdapterView<?> parent, View view, int
+//        position, long identity) {
+//        Song data = als.get(position);
+//        Intent i = new Intent(SongListActivity.this,
+//        SongEditPage.class);
+//        i.putExtra("data", data);
+//        startActivity(i);
+//        }
+//        });
