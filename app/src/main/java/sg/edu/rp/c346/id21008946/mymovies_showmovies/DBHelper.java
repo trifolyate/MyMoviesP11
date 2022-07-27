@@ -67,7 +67,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<Movies> getAllMovies() {
-        ArrayList<Movies> songs = new ArrayList<Movies>();
+        ArrayList<Movies> movies = new ArrayList<Movies>();
 
         SQLiteDatabase db = this.getReadableDatabase();
         //        COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -86,13 +86,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 String genre = cursor.getString(2);
                 int year = cursor.getInt(3);
                 String rating = cursor.getString(4);
-                Movies song = new Movies(id,title,genre,year,rating);
-                songs.add(song);
+                Movies movie = new Movies(title,genre,year,rating);
+                movies.add(movie);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
-        return songs;
+        return movies;
     }
 
 //    public ArrayList<Song> getAllSongsWith5Stars() {

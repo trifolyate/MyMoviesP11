@@ -20,10 +20,15 @@ public class Show_Movies extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_movies);
 
-        //DBHelper dbh= new DBHelper(Show_Movies.this);
-        //alMovieList.clear;
-        //alMovieList.addAll(dbh.getAllMovies());
-        //caMovie.notifyDataChange();
+        lvMovies = findViewById(R.id.listViewMoviesList);
+        alMovieList = new ArrayList<Movies>();
+        caMovie = new CustomAdapter(this,R.layout.row,alMovieList);
+        lvMovies.setAdapter(caMovie);
+
+        DBHelper dbh= new DBHelper(Show_Movies.this);
+        alMovieList.clear();
+        alMovieList.addAll(dbh.getAllMovies());
+        caMovie.notifyDataSetChanged();
 
 
 
