@@ -15,8 +15,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    CustomAdapter caMovie;
-    ArrayList<Movies> alMovieList;
     TextView tvTitle, tvGenre, tvYear, tvRating;
     EditText etTitle, etGenre, etYear;
     Spinner spnRating;
@@ -44,6 +42,18 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, Show_Movies.class);
                 startActivity(i);
             }});
+
+        btnInsert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String movietitle = etTitle.getText().toString();
+                String moviegenre = etGenre.getText().toString();
+                int year = Integer.parseInt(etYear.getText().toString());
+                String movierating = "TEST";
+                DBHelper dbh = new DBHelper(MainActivity.this);
+                long inserted_id =dbh.insertMovie(movietitle,moviegenre,year,movierating);
+            }
+        });
 
 
     }

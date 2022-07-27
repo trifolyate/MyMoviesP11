@@ -21,6 +21,17 @@
         android:text="Genre"
         android:textColor="@color/purple_700"/>
 
+<!--    btnInsert.setOnClickListener(new View.OnClickListener() {-->
+<!--    @Override-->
+<!--    public void onClick(View view) {-->
+<!--    String movietitle = etTitle.getText().toString();-->
+<!--    String moviegenre = etGenre.getText().toString();-->
+<!--    int year = Integer.parseInt(etYear.getText().toString());-->
+<!--    String movierating = "TEST";-->
+<!--    DBHelper dbh = new DBHelper(MainActivity.this);-->
+<!--    long inserted_id =dbh.insertMovie(movietitle,moviegenre,year,movierating);-->
+<!--    }-->
+<!--    });-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
