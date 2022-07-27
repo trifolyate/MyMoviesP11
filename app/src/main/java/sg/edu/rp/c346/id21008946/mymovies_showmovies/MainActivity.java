@@ -25,16 +25,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvTitle.findViewById(R.id.tvTitle);
-        tvGenre.findViewById(R.id.tvGenre);
-        tvYear.findViewById(R.id.tvYear);
-        tvRating.findViewById(R.id.tvRating);
-        etTitle.findViewById(R.id.etTitle);
-        etGenre.findViewById(R.id.etGenre);
-        etYear.findViewById(R.id.etYear);
-        spnRating.findViewById(R.id.spnRating);
-        btnInsert.findViewById(R.id.btnInsert);
-        btnShowList.findViewById(R.id.btnShowList);
+        tvTitle = findViewById(R.id.tvTitle);
+        tvGenre = findViewById(R.id.tvGenre);
+        tvYear =findViewById(R.id.tvYear);
+        tvRating =findViewById(R.id.tvRating);
+        etTitle =findViewById(R.id.etTitle);
+        etGenre =findViewById(R.id.etGenre);
+        etYear =findViewById(R.id.etYear);
+        spnRating =findViewById(R.id.spnRating);
+        btnInsert =findViewById(R.id.btnInsert);
+        btnShowList =findViewById(R.id.btnShowList);
 
 
     }
