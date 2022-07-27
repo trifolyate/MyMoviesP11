@@ -3,6 +3,8 @@ package sg.edu.rp.c346.id21008946.mymovies_showmovies;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -15,6 +17,7 @@ public class ModifyPage extends AppCompatActivity {
     ArrayList<Movies> alMovieList;
     CustomAdapter caMovies;
     ArrayList<String> alsMovieList;
+    Button btnCancel, btnUpdate, btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,24 @@ public class ModifyPage extends AppCompatActivity {
         etMovieGenre = findViewById(R.id.editTextMovieGenre);
         etMovieYear = findViewById(R.id.editTextMovieYear);
         spnGenre = findViewById(R.id.spinnerMovieRating);
+        btnCancel = findViewById(R.id.buttonCancel);
+        btnUpdate = findViewById(R.id.buttonUpdate);
+        btnDelete = findViewById(R.id.buttonDelete);
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DBHelper dbh = new DBHelper(ModifyPage.this);
+            }
+        });
+
     }
 }
 
