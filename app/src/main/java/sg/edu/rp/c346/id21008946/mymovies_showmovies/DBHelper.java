@@ -182,7 +182,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //
 //        db.close();
 //        return result;
-//    }
+//    } haha
 //
 //    public int deleteNote(int id){
 //        SQLiteDatabase db = this.getWritableDatabase();
