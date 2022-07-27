@@ -4,9 +4,9 @@ public class Movies {
     private String movieTitle;
     private String moviegenre;
     private int movieyear;
-    private char movierating;
+    private String movierating;
 
-    public Movies(String movieTitle, String moviegenre, int movieyear, char movierating) {
+    public Movies(String movieTitle, String moviegenre, int movieyear, String movierating) {
         this.movieTitle = movieTitle;
         this.moviegenre = moviegenre;
         this.movieyear = movieyear;
@@ -37,13 +37,11 @@ public class Movies {
         this.movieyear = movieyear;
     }
 
-    public char getMovierating() {
+    public String getMovierating() {
         return movierating;
     }
 
-    public void setMovierating(char movierating) {
+    public void setMovierating(String movierating) {
         this.movierating = movierating;
     }
-
-
 }
