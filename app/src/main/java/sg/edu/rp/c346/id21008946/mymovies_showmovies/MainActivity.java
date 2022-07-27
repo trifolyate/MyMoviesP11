@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        tvTitle.findViewById(R.id.tvTitle);
         tvGenre.findViewById(R.id.tvGenre);
         tvYear.findViewById(R.id.tvYear);
         tvRating.findViewById(R.id.tvRating);
