@@ -1,12 +1,14 @@
 package sg.edu.rp.c346.id21008946.mymovies_showmovies;
 
 public class Movies {
+    private int movieid;
     private String movieTitle;
     private String moviegenre;
     private int movieyear;
     private String movierating;
 
-    public Movies(String movieTitle, String moviegenre, int movieyear, String movierating) {
+    public Movies(int movieid, String movieTitle, String moviegenre, int movieyear, String movierating) {
+        this.movieid = movieid;
         this.movieTitle = movieTitle;
         this.moviegenre = moviegenre;
         this.movieyear = movieyear;
