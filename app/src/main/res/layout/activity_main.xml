@@ -18,21 +18,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text" />
+        android:inputType="text"
+        android:hint="Enter movie title here"/>
     
     <TextView
         android:id="@+id/tvGenre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Genre" />
-    
+
     <EditText
         android:id="@+id/etGenre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Enter genre here"
         android:inputType="text" />
-    
+
     <TextView
         android:id="@+id/tvYear"
         android:layout_width="match_parent"
@@ -44,7 +46,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="number"
+        android:digits="1234567890"
+        android:maxLength="4"
+        android:hint="Enter year of release here"/>
     
     <TextView
         android:id="@+id/tvRating"
