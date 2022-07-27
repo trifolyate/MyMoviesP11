@@ -30,11 +30,13 @@ public class Show_Movies extends AppCompatActivity {
         alMovieList = new ArrayList<Movies>();
         caMovie = new CustomAdapter(this,R.layout.row,alMovieList);
         lvMovies.setAdapter(caMovie);
+        btnShowAllPG13 = findViewById(R.id.btnShowPG13);
 
         DBHelper dbh= new DBHelper(Show_Movies.this);
         alMovieList.clear();
         alMovieList.addAll(dbh.getAllMovies());
         caMovie.notifyDataSetChanged();
+
 
         lvMovies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -45,6 +47,16 @@ public class Show_Movies extends AppCompatActivity {
                         ModifyPage.class);
                 i.putExtra("data", data);
                 startActivity(i);
+            }
+        });
+
+        btnShowAllPG13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DBHelper dbh = new DBHelper(Show_Movies.this);
+                alMovieList.clear();
+                alMovieList.addAll(dbh.getAllPG13Movies());
+                caMovie.notifyDataSetChanged();
             }
         });
 

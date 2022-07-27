@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -38,6 +39,7 @@ public class ModifyPage extends AppCompatActivity {
         btnUpdate = findViewById(R.id.buttonUpdate);
         btnDelete = findViewById(R.id.buttonDelete);
 
+        movieRating = "";
         Intent i = getIntent();
         data = (Movies) i.getSerializableExtra("data");
 
@@ -45,6 +47,26 @@ public class ModifyPage extends AppCompatActivity {
         etMovieTitle.setText(data.getMovieTitle());
         etMovieGenre.setText(data.getMoviegenre());
         etMovieYear.setText(data.getMovieyear() + "");
+        if(data.getMovierating().equals("G"))
+        {
+            spnGenre.setSelection(0);
+        } else if(data.getMovierating().equals("PG"))
+        {
+            spnGenre.setSelection(1);
+        }else if(data.getMovierating().equals("PG13"))
+        {
+            spnGenre.setSelection(2);
+        }else if(data.getMovierating().equals("NC16"))
+        {
+            spnGenre.setSelection(3);
+        }else if(data.getMovierating().equals("M18"))
+        {
+            spnGenre.setSelection(4);
+        }else if(data.getMovierating().equals("R21"))
+        {
+            spnGenre.setSelection(5);
+        }
+
 
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +85,7 @@ public class ModifyPage extends AppCompatActivity {
                 String yearString = etMovieYear.getText().toString();
                 int year = Integer.parseInt(yearString);
                 data.setMovieyear(year);
+                data.setMovierating(movieRating);
                 dbh.updateNote(data);
                 dbh.close();
 
@@ -71,6 +94,8 @@ public class ModifyPage extends AppCompatActivity {
             }
         });
 
+
+
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +103,44 @@ public class ModifyPage extends AppCompatActivity {
                 int result = dbh.deleteNote(data.getMovieid());
                 Log.d("Result", result + "");
                 finish();
+            }
+        });
+
+        spnGenre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        String spinnerItems1 = spnGenre.getSelectedItem().toString();
+                        movieRating = spinnerItems1;
+                        break;
+                    case 1:
+                        String spinnerItems2 = spnGenre.getSelectedItem().toString();
+                        movieRating = spinnerItems2;
+                        break;
+                    case 2:
+                        String spinnerItems3 = spnGenre.getSelectedItem().toString();
+                        movieRating = spinnerItems3;
+                        break;
+                    case 3:
+                        String spinnerItems4 = spnGenre.getSelectedItem().toString();
+                        movieRating = spinnerItems4;
+                        break;
+                    case 4:
+                        String spinnerItems5 = spnGenre.getSelectedItem().toString();
+                        movieRating = spinnerItems5;
+                        break;
+                    case 5:
+                        String spinnerItems6 = spnGenre.getSelectedItem().toString();
+                        movieRating = spinnerItems6;
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
