@@ -22,6 +22,14 @@ public class Movies {
         this.movierating = movierating;
     }
 
+    public int getMovieid() {
+        return movieid;
+    }
+
+    public void setMovieid(int movieid) {
+        this.movieid = movieid;
+    }
+
     public String getMovieTitle() {
         return movieTitle;
     }

@@ -168,29 +168,29 @@ public class DBHelper extends SQLiteOpenHelper {
 //        return songs;
 //    }
 
-//    public int updateNote(Song data){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(COLUMN_TITLE, data.getTitle());
-//        values.put(COLUMN_SINGERS, data.getSingers());
-//        values.put(COLUMN_YEAR, data.getYear());
-//        values.put(COLUMN_STARS, data.getStars());
+    public int updateNote(Movies data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_MOVIETITLE, data.getMovieTitle());
+        values.put(COLUMN_MOVIEGENRE, data.getMoviegenre());
+        values.put(COLUMN_MOVIEYEAR, data.getMovieyear());
+        values.put(COLUMN_MOVIERATING, data.getMovierating());
+
+        String condition = COLUMN_ID + "= ?";
+        String[] args = {String.valueOf(data.getMovieid())};
+        int result = db.update(TABLE_MOVIES, values, condition, args);
+
+        db.close();
+        return result;
+    }
 //
-//        String condition = COLUMN_ID + "= ?";
-//        String[] args = {String.valueOf(data.getId())};
-//        int result = db.update(TABLE_SONGS, values, condition, args);
-//
-//        db.close();
-//        return result;
-//    } haha
-//
-//    public int deleteNote(int id){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String condition = COLUMN_ID + "= ?";
-//        String[] args = {String.valueOf(id)};
-//        int result = db.delete(TABLE_SONGS, condition, args);
-//        db.close();
-//        return result;
-//    }
+    public int deleteNote(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String condition = COLUMN_ID + "= ?";
+        String[] args = {String.valueOf(id)};
+        int result = db.delete(TABLE_MOVIES, condition, args);
+        db.close();
+        return result;
+    }
 
 }

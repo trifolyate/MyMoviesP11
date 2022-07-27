@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -66,9 +67,10 @@ public class MainActivity extends AppCompatActivity {
                 String movietitle = etTitle.getText().toString();
                 String moviegenre = etGenre.getText().toString();
                 int year = Integer.parseInt(etYear.getText().toString());
-                String movieratingfinal = movieRating;
+                String movieratingfinal = movieRating + "";
                 DBHelper dbh = new DBHelper(MainActivity.this);
                 long inserted_id =dbh.insertMovie(movietitle,moviegenre,year,movieratingfinal);
+                Log.d("insert rating values",movieratingfinal);
                 if (inserted_id != -1) {
 //                    alMovieList.clear();
 //                    alMovieList.addAll(dbh.getAllMovies());
@@ -88,27 +90,27 @@ public class MainActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         String spinnerItems1 = spnRating.getSelectedItem().toString();
-                        movieRating += spinnerItems1;
+                        movieRating = spinnerItems1;
                         break;
                     case 1:
                         String spinnerItems2 = spnRating.getSelectedItem().toString();
-                        movieRating += spinnerItems2;
+                        movieRating = spinnerItems2;
                         break;
                     case 2:
                         String spinnerItems3 = spnRating.getSelectedItem().toString();
-                        movieRating += spinnerItems3;
+                        movieRating = spinnerItems3;
                         break;
                     case 3:
                         String spinnerItems4 = spnRating.getSelectedItem().toString();
-                        movieRating += spinnerItems4;
+                        movieRating = spinnerItems4;
                         break;
                     case 4:
                         String spinnerItems5 = spnRating.getSelectedItem().toString();
-                        movieRating += spinnerItems5;
+                        movieRating = spinnerItems5;
                         break;
                     case 5:
                         String spinnerItems6 = spnRating.getSelectedItem().toString();
-                        movieRating += spinnerItems6;
+                        movieRating = spinnerItems6;
                         break;
 
                 }
