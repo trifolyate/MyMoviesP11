@@ -66,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String movietitle = etTitle.getText().toString();
                 String moviegenre = etGenre.getText().toString();
-                int year = Integer.parseInt(etYear.getText().toString());
+                String yearString = etYear.getText().toString();
+                int year = Integer.parseInt(yearString);
                 String movieratingfinal = movieRating + "";
                 DBHelper dbh = new DBHelper(MainActivity.this);
                 long inserted_id =dbh.insertMovie(movietitle,moviegenre,year,movieratingfinal);
@@ -131,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
 
     void populateData(){
         DBHelper dbh = new DBHelper(MainActivity.this);
-        dbh.insertMovie("Title","Genre",2111,"Nice");
+        Movies item1 = new Movies(1,"Title","Genre",2111,"Nice");
+        alMovieList.add(item1);
 //        alMovieList.clear();
 //        alMovieList.addAll(dbh.getAllMovies());
 //        caMovie.notifyDataSetChanged();

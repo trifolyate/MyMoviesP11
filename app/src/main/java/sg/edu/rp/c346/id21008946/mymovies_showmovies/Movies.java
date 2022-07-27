@@ -9,12 +9,6 @@ public class Movies implements Serializable {
     private int movieyear;
     private String movierating;
 
-    public Movies(String movieTitle, String moviegenre, int movieyear, String movierating) {
-        this.movieTitle = movieTitle;
-        this.moviegenre = moviegenre;
-        this.movieyear = movieyear;
-        this.movierating = movierating;
-    }
 
     public Movies(int movieid, String movieTitle, String moviegenre, int movieyear, String movierating) {
         this.movieid = movieid;

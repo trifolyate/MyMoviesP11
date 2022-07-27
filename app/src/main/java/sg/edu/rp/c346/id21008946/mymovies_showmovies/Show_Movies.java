@@ -18,6 +18,7 @@ public class Show_Movies extends AppCompatActivity {
     Button btnShowAllPG13;
     CustomAdapter caMovie;
     ArrayList<Movies> alMovieList;
+
     Movies data;
 
     @Override
@@ -47,5 +48,14 @@ public class Show_Movies extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DBHelper dbh = new DBHelper(Show_Movies.this);
+        alMovieList.clear();
+        alMovieList.addAll(dbh.getAllMovies());
+        caMovie.notifyDataSetChanged();
     }
 }
