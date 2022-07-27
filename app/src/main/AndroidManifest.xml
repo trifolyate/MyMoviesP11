@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sg.edu.rp.c346.id21008946.mymovies_showmovies">
-
+    
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMoviesShowMovies">
         <activity
+            android:name=".Show_Movies"
+            android:exported="false" />
+        <activity
             android:name=".ModifyPage"
             android:exported="false" />
         <activity
@@ -17,7 +20,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+    
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
