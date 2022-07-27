@@ -28,3 +28,32 @@ public class ModifyPage extends AppCompatActivity {
         spnGenre = findViewById(R.id.spinnerMovieRating);
     }
 }
+
+// btnUpdateEDIT.setOnClickListener(new View.OnClickListener() {
+//@Override
+//public void onClick(View v) {
+//        DBhelper dbh = new DBhelper(SongEditPage.this);
+//        data.setTitle(etSongTitleEDIT.getText().toString());
+//        data.setSingers(etSingersNameEDIT.getText().toString());
+//        String yeartextEDIT = etYearOfReleaseEDIT.getText().toString();
+//        int year = Integer.parseInt(yeartextEDIT);
+//        int radioID = rgRatingEDIT.getCheckedRadioButtonId();
+//        rb = findViewById(radioID);
+//        data.setYear(year);
+//        data.setStars(Integer.parseInt(rb.getText().toString()));
+//        dbh.updateNote(data);
+//        dbh.close();
+//
+//        finish();
+//        }
+//        });
+//
+//        btnDeleteEDIT.setOnClickListener(new View.OnClickListener() {
+//@Override
+//public void onClick(View view) {
+//        DBhelper dbh = new DBhelper(SongEditPage.this);
+//        int result = dbh.deleteNote(data.getId());
+//        Log.d("Result",result+"");
+//        finish();
+//        }
+//        });
