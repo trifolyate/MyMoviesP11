@@ -39,6 +39,7 @@ public class CustomAdapter extends ArrayAdapter {
         tvGenre.setText("+" + currentItem.getMoviegenre());
         tvYear.setText(currentItem.getMovieyear() + "");
         // G,M18,NC16,PG,PG13,R21
+
         if(currentItem.getMovierating() == "G")
         {
             ivRating.setImageResource(R.drawable.rating_g);
@@ -47,22 +48,23 @@ public class CustomAdapter extends ArrayAdapter {
         {
             ivRating.setImageResource(R.drawable.rating_pg);
         }
-        else if (currentItem.getMovierating() == "PG13")
-        {
-            ivRating.setImageResource(R.drawable.rating_pg13);
-        }
-        else if (currentItem.getMovierating() == "NC16")
-        {
-            ivRating.setImageResource(R.drawable.rating_nc16);
-        }
-        else if (currentItem.getMovierating() == "M18")
-        {
-            ivRating.setImageResource(R.drawable.rating_m18);
-        }
-        else if (currentItem.getMovierating() == "R21")
-        {
-            ivRating.setImageResource(R.drawable.rating_r21);
-        }
+//        else if (currentItem.getMovierating() == "PG13")
+//        {
+//            ivRating.setImageResource(R.drawable.rating_pg13);
+//        }
+//        else if (currentItem.getMovierating() == "NC16")
+//        {
+//            ivRating.setImageResource(R.drawable.rating_nc16);
+//        }
+//        else if (currentItem.getMovierating() == "M18")
+//        {
+//            ivRating.setImageResource(R.drawable.rating_m18);
+//        }
+//        else if (currentItem.getMovierating() == "R21")
+//        {
+//            ivRating.setImageResource(R.drawable.rating_r21);
+//        }
+
 
         return rowView;
     }

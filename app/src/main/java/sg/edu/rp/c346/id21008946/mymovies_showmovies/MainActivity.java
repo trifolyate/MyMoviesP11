@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnInsert, btnShowList;
     String movieRating;
 //    ListView lvTest;
-//    ArrayList<Movies> alMovieList;
+    ArrayList<Movies> alMovieList;
 //    CustomAdapter caMovie;
 
     @Override
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         //test
 //        lvTest = findViewById(R.id.listViewTest);
-//        alMovieList = new ArrayList<>();
+        alMovieList = new ArrayList<>();
 //        caMovie = new CustomAdapter(this,R.layout.row,alMovieList);
 //        lvTest.setAdapter(caMovie);
 
@@ -70,16 +70,20 @@ public class MainActivity extends AppCompatActivity {
                 String movieratingfinal = movieRating + "";
                 DBHelper dbh = new DBHelper(MainActivity.this);
                 long inserted_id =dbh.insertMovie(movietitle,moviegenre,year,movieratingfinal);
-                Log.d("insert rating values",movieratingfinal);
+
                 if (inserted_id != -1) {
-//                    alMovieList.clear();
-//                    alMovieList.addAll(dbh.getAllMovies());
+                    alMovieList.clear();
+                    alMovieList.addAll(dbh.getAllMovies());
 //                    caMovie.notifyDataSetChanged();
                     Toast.makeText(MainActivity.this, "Insert successful",
                             Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "Insert not successful",
                             Toast.LENGTH_SHORT).show();
+                }
+                for(int i = 0; i < alMovieList.size();i++)
+                {
+                    Log.d("ratings",alMovieList.get(i).getMovierating());
                 }
             }
         });

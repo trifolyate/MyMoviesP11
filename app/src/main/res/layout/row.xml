@@ -48,7 +48,7 @@
             android:id="@+id/imageViewRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/rating_g" />
+            app:srcCompat="@drawable/rating_m18" />
 
     </LinearLayout>
 </LinearLayout>

@@ -61,4 +61,8 @@ public class Movies {
     public void setMovierating(String movierating) {
         this.movierating = movierating;
     }
+
+    public String toStringRating(){
+        return "rating: " + getMovierating();
+    }
 }
