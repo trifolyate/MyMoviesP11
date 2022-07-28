@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -69,22 +70,31 @@ public class MainActivity extends AppCompatActivity {
                 String yearString = etYear.getText().toString();
                 int year = Integer.parseInt(yearString);
                 String movieratingfinal = movieRating + "";
-                DBHelper dbh = new DBHelper(MainActivity.this);
-                long inserted_id =dbh.insertMovie(movietitle,moviegenre,year,movieratingfinal);
-
-                if (inserted_id != -1) {
-                    alMovieList.clear();
-                    alMovieList.addAll(dbh.getAllMovies());
-//                    caMovie.notifyDataSetChanged();
-                    Toast.makeText(MainActivity.this, "Insert successful",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MainActivity.this, "Insert not successful",
-                            Toast.LENGTH_SHORT).show();
-                }
-                for(int i = 0; i < alMovieList.size();i++)
+                if(year < 1888)
                 {
-                    Log.d("ratings",alMovieList.get(i).getMovierating());
+                    Toast.makeText(MainActivity.this,"Please enter the correct year(more than 1888)",Toast.LENGTH_LONG).show();
+                }else if(year > 2022)
+                {
+                    Toast.makeText(MainActivity.this,"Please enter the correct year(less than 2022)",Toast.LENGTH_LONG).show();
+                }else
+                {
+                    DBHelper dbh = new DBHelper(MainActivity.this);
+                    long inserted_id =dbh.insertMovie(movietitle,moviegenre,year,movieratingfinal);
+
+                    if (inserted_id != -1) {
+                        alMovieList.clear();
+                        alMovieList.addAll(dbh.getAllMovies());
+//                    caMovie.notifyDataSetChanged();
+                        Toast.makeText(MainActivity.this, "Insert successful",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "Insert not successful",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    etTitle.setText("");
+                    etGenre.setText("");
+                    etYear.setText("");
+                    etYear.setSelection(0);
                 }
             }
         });
@@ -117,7 +127,10 @@ public class MainActivity extends AppCompatActivity {
                         String spinnerItems6 = spnRating.getSelectedItem().toString();
                         movieRating = spinnerItems6;
                         break;
-
+                    case 6:
+                        String spinnerItems7 = spnRating.getSelectedItem().toString();
+                        movieRating = spinnerItems7;
+                        break;
                 }
             }
 
@@ -127,8 +140,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        etTitle.addTextChangedListener(songInsertTextWatcher);
+        etGenre.addTextChangedListener(songInsertTextWatcher);
+        etYear.addTextChangedListener(songInsertTextWatcher);
     }
+
+    private TextWatcher songInsertTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String title = etTitle.getText().toString().trim();
+            String singers = etGenre.getText().toString().trim();
+            String year = etYear.getText().toString().trim();
+
+            if(!title.isEmpty() && !singers.isEmpty() && !year.isEmpty() && year.length()==4)
+            {
+                btnInsert.setEnabled(true);
+            }
+            else
+            {
+                btnInsert.setEnabled(false);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
     void populateData(){
         DBHelper dbh = new DBHelper(MainActivity.this);
@@ -138,4 +181,6 @@ public class MainActivity extends AppCompatActivity {
 //        alMovieList.addAll(dbh.getAllMovies());
 //        caMovie.notifyDataSetChanged();
     }
+
+
 }

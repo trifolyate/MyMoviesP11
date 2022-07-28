@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class CustomAdapter extends ArrayAdapter {
@@ -40,29 +42,40 @@ public class CustomAdapter extends ArrayAdapter {
         tvYear.setText(currentItem.getMovieyear() + "");
         // G,M18,NC16,PG,PG13,R21
 
-        if(currentItem.getMovierating().equals("G"))
+        if(currentItem.getMovierating().equals("U"))
         {
-            ivRating.setImageResource(R.drawable.rating_g);
+            String imageUrl = "https://images.immediate.co.uk/production/volatile/sites/28/2019/02/16277-28797ce.jpg?quality=90&webp=true&fit=584,471";
+            Picasso.with(parent_context).load(imageUrl).into(ivRating);
         }
         else if (currentItem.getMovierating().equals("PG"))
         {
-            ivRating.setImageResource(R.drawable.rating_pg);
+            String imageUrl = "https://images.immediate.co.uk/production/volatile/sites/28/2019/02/16278-28797ce.jpg?quality=90&webp=true&fit=584,471";
+            Picasso.with(parent_context).load(imageUrl).into(ivRating);
         }
-        else if (currentItem.getMovierating().equals("PG13"))
+        else if (currentItem.getMovierating().equals("12A"))
         {
-            ivRating.setImageResource(R.drawable.rating_pg13);
+            String imageUrl = "https://images.immediate.co.uk/production/volatile/sites/28/2019/02/16279-8d5bdb7.jpg?quality=90&webp=true&fit=490,490";
+            Picasso.with(parent_context).load(imageUrl).into(ivRating);
         }
-        else if (currentItem.getMovierating().equals("NC16"))
+        else if (currentItem.getMovierating().equals("12"))
         {
-            ivRating.setImageResource(R.drawable.rating_nc16);
+            String imageUrl = "https://images.immediate.co.uk/production/volatile/sites/28/2019/02/16280-8d5bdb7.jpg?quality=90&webp=true&fit=320,320";
+            Picasso.with(parent_context).load(imageUrl).into(ivRating);
         }
-        else if (currentItem.getMovierating().equals("M18"))
+        else if (currentItem.getMovierating().equals("15"))
         {
-            ivRating.setImageResource(R.drawable.rating_m18);
+            String imageUrl = "https://images.immediate.co.uk/production/volatile/sites/28/2019/02/16281-8d5bdb7.jpg?quality=90&webp=true&fit=490,490";
+            Picasso.with(parent_context).load(imageUrl).into(ivRating);
         }
-        else if (currentItem.getMovierating().equals("R21"))
+        else if (currentItem.getMovierating().equals("18"))
         {
-            ivRating.setImageResource(R.drawable.rating_r21);
+            String imageUrl = "https://images.immediate.co.uk/production/volatile/sites/28/2019/02/16282-05127b2.jpg?quality=90&webp=true&fit=300,300";
+            Picasso.with(parent_context).load(imageUrl).into(ivRating);
+        }
+        else if (currentItem.getMovierating().equals("R18"))
+        {
+            String imageUrl = "https://images.immediate.co.uk/production/volatile/sites/28/2019/02/16283-05127b2.jpg?quality=90&webp=true&fit=515,424";
+            Picasso.with(parent_context).load(imageUrl).into(ivRating);
         }
 
 

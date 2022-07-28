@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">My Movies - Show Movies</string>
     <string-array name="spinnerItems">
-        <item>G</item>
+        <item>U</item>
         <item>PG</item>
-        <item>PG13</item>
-        <item>NC16</item>
-        <item>M18</item>
-        <item>R21</item>
+        <item>12A</item>
+        <item>12</item>
+        <item>15</item>
+        <item>18</item>
+        <item>R18</item>
     </string-array>
 </resources>

@@ -3,13 +3,20 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    
+
     <Button
-        android:id="@+id/btnShowPG13"
+        android:id="@+id/btnShowMovies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show all PG-13 Movies" />
-    
+        android:text="show all movies with this rating" />
+
+    <Spinner
+        android:id="@+id/spinnerRatings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/spinnerItems"
+        android:layout_margin="10dp"/>
+
     <ListView
         android:id="@+id/listViewMoviesList"
         android:layout_width="match_parent"

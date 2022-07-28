@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -47,24 +49,27 @@ public class ModifyPage extends AppCompatActivity {
         etMovieTitle.setText(data.getMovieTitle());
         etMovieGenre.setText(data.getMoviegenre());
         etMovieYear.setText(data.getMovieyear() + "");
-        if(data.getMovierating().equals("G"))
+        if(data.getMovierating().equals("U"))
         {
             spnGenre.setSelection(0);
         } else if(data.getMovierating().equals("PG"))
         {
             spnGenre.setSelection(1);
-        }else if(data.getMovierating().equals("PG13"))
+        }else if(data.getMovierating().equals("12A"))
         {
             spnGenre.setSelection(2);
-        }else if(data.getMovierating().equals("NC16"))
+        }else if(data.getMovierating().equals("12"))
         {
             spnGenre.setSelection(3);
-        }else if(data.getMovierating().equals("M18"))
+        }else if(data.getMovierating().equals("15"))
         {
             spnGenre.setSelection(4);
-        }else if(data.getMovierating().equals("R21"))
+        }else if(data.getMovierating().equals("18"))
         {
             spnGenre.setSelection(5);
+        }else if(data.getMovierating().equals("R18"))
+        {
+            spnGenre.setSelection(6);
         }
 
 
@@ -79,17 +84,27 @@ public class ModifyPage extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DBHelper dbh = new DBHelper(ModifyPage.this);
-                data.setMovieTitle(etMovieTitle.getText().toString());
-                data.setMoviegenre(etMovieGenre.getText().toString());
-                String yearString = etMovieYear.getText().toString();
-                int year = Integer.parseInt(yearString);
-                data.setMovieyear(year);
-                data.setMovierating(movieRating);
-                dbh.updateNote(data);
-                dbh.close();
+                String yearS = etMovieYear.getText().toString();
+                int yearI = Integer.parseInt(yearS);
+                if(yearI < 1888)
+                {
+                    Toast.makeText(ModifyPage.this,"Please enter the correct year(more than 1888)",Toast.LENGTH_LONG).show();
+                }else if(yearI > 2022)
+                {
+                    Toast.makeText(ModifyPage.this,"Please enter the correct year(less than 2022)",Toast.LENGTH_LONG).show();
+                }else{
+                    DBHelper dbh = new DBHelper(ModifyPage.this);
+                    data.setMovieTitle(etMovieTitle.getText().toString());
+                    data.setMoviegenre(etMovieGenre.getText().toString());
+                    String yearString = etMovieYear.getText().toString();
+                    int year = Integer.parseInt(yearString);
+                    data.setMovieyear(year);
+                    data.setMovierating(movieRating);
+                    dbh.updateNote(data);
+                    dbh.close();
 
-                finish();
+                    finish();
+                }
 //                Toast.makeText(ModifyPage.this, "hi", Toast.LENGTH_SHORT).show();
             }
         });
@@ -144,8 +159,37 @@ public class ModifyPage extends AppCompatActivity {
             }
         });
 
+        etMovieTitle.addTextChangedListener(songInsertTextWatcher);
+        etMovieGenre.addTextChangedListener(songInsertTextWatcher);
+        etMovieYear.addTextChangedListener(songInsertTextWatcher);
     }
+    private TextWatcher songInsertTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int before, int count) {
 
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String title = etMovieTitle.getText().toString().trim();
+            String singers = etMovieGenre.getText().toString().trim();
+            String year = etMovieYear.getText().toString().trim();
+
+            if(!title.isEmpty() && !singers.isEmpty() && !year.isEmpty() && year.length()==4)
+            {
+                btnUpdate.setEnabled(true);
+            }
+            else
+            {
+                btnUpdate.setEnabled(false);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 }
 
 
