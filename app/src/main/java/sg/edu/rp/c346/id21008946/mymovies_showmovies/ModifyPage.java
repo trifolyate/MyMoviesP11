@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,13 +26,16 @@ public class ModifyPage extends AppCompatActivity {
     ArrayList<String> alsMovieList;
     Button btnCancel, btnUpdate, btnDelete;
     Movies data;
-    String movieRating;
+    String movieRatingBefore,movieRatingAfter;
+    TextView tvBefore,tvAfter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_page);
 
+        tvBefore = findViewById(R.id.textViewBefore);
+        tvAfter = findViewById(R.id.textViewAfter);
         etMovieID = findViewById(R.id.editTextMovieID);
         etMovieTitle = findViewById(R.id.editTextMovieTitle);
         etMovieGenre = findViewById(R.id.editTextMovieGenre);
@@ -41,9 +45,13 @@ public class ModifyPage extends AppCompatActivity {
         btnUpdate = findViewById(R.id.buttonUpdate);
         btnDelete = findViewById(R.id.buttonDelete);
 
-        movieRating = "";
+
         Intent i = getIntent();
         data = (Movies) i.getSerializableExtra("data");
+        movieRatingBefore = data.getMovierating();
+        movieRatingAfter = "";
+        tvBefore.setText(movieRatingBefore);
+        Log.d("123moviebefore",tvBefore.getText().toString());
 
         etMovieID.setText(data.getMovieid() + "");
         etMovieTitle.setText(data.getMovieTitle());
@@ -99,7 +107,7 @@ public class ModifyPage extends AppCompatActivity {
                     String yearString = etMovieYear.getText().toString();
                     int year = Integer.parseInt(yearString);
                     data.setMovieyear(year);
-                    data.setMovierating(movieRating);
+                    data.setMovierating(movieRatingAfter);
                     dbh.updateNote(data);
                     dbh.close();
 
@@ -127,30 +135,31 @@ public class ModifyPage extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         String spinnerItems1 = spnGenre.getSelectedItem().toString();
-                        movieRating = spinnerItems1;
+                        movieRatingAfter = spinnerItems1;
                         break;
                     case 1:
                         String spinnerItems2 = spnGenre.getSelectedItem().toString();
-                        movieRating = spinnerItems2;
+                        movieRatingAfter = spinnerItems2;
                         break;
                     case 2:
                         String spinnerItems3 = spnGenre.getSelectedItem().toString();
-                        movieRating = spinnerItems3;
+                        movieRatingAfter = spinnerItems3;
                         break;
                     case 3:
                         String spinnerItems4 = spnGenre.getSelectedItem().toString();
-                        movieRating = spinnerItems4;
+                        movieRatingAfter = spinnerItems4;
                         break;
                     case 4:
                         String spinnerItems5 = spnGenre.getSelectedItem().toString();
-                        movieRating = spinnerItems5;
+                        movieRatingAfter = spinnerItems5;
                         break;
                     case 5:
                         String spinnerItems6 = spnGenre.getSelectedItem().toString();
-                        movieRating = spinnerItems6;
+                        movieRatingAfter = spinnerItems6;
                         break;
-
                 }
+                tvAfter.setText(movieRatingAfter);
+                Log.d("123movieafter",tvAfter.getText().toString());
             }
 
             @Override
@@ -159,11 +168,14 @@ public class ModifyPage extends AppCompatActivity {
             }
         });
 
-        etMovieTitle.addTextChangedListener(songInsertTextWatcher);
-        etMovieGenre.addTextChangedListener(songInsertTextWatcher);
-        etMovieYear.addTextChangedListener(songInsertTextWatcher);
+        etMovieTitle.addTextChangedListener(movieInsertTextWatcher);
+        etMovieGenre.addTextChangedListener(movieInsertTextWatcher);
+        etMovieYear.addTextChangedListener(movieInsertTextWatcher);
+        tvAfter.addTextChangedListener(movieInsertTextWatcher);
+        tvBefore.addTextChangedListener(movieInsertTextWatcher);
+
     }
-    private TextWatcher songInsertTextWatcher = new TextWatcher() {
+    private TextWatcher movieInsertTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int before, int count) {
 
@@ -171,15 +183,39 @@ public class ModifyPage extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            String title = etMovieTitle.getText().toString().trim();
-            String singers = etMovieGenre.getText().toString().trim();
-            String year = etMovieYear.getText().toString().trim();
+            String aftertitle = etMovieTitle.getText().toString().trim();
+            String aftergenre = etMovieGenre.getText().toString().trim();
+            String afteryear = etMovieYear.getText().toString().trim();
+            String beforerating = data.getMovierating();
+            String afterrating = tvAfter.getText().toString();
+            String beforetitle = data.getMovieTitle();
+            String beforegenre = data.getMoviegenre();
+            String beforeyear = data.getMovieyear()+"";
 
-            if(!title.isEmpty() && !singers.isEmpty() && !year.isEmpty() && year.length()==4)
+
+//            if(title.isEmpty() || singers.isEmpty() || year.isEmpty() || year.length()!=4)
+//            {
+//                if (data.getMovierating()!=movieRating){
+//                    btnUpdate.setEnabled(true);
+//                } else{
+//                    btnUpdate.setEnabled(false);
+//                }
+//            }
+//            else
+//            {
+//                btnUpdate.setEnabled(true);
+//            }
+            if(!aftertitle.isEmpty() && !aftergenre.isEmpty() && !afteryear.isEmpty() && afteryear.length()==4)
             {
-                btnUpdate.setEnabled(true);
-            }
-            else
+                if(!beforetitle.equals(aftertitle) || !beforegenre.equals(aftergenre) || !beforeyear.equals(afteryear) || !beforerating.equals(afterrating))
+                {
+                    btnUpdate.setEnabled(true);
+                }
+                else
+                {
+                    btnUpdate.setEnabled(false);
+                }
+            } else
             {
                 btnUpdate.setEnabled(false);
             }

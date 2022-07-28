@@ -101,7 +101,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns= {COLUMN_ID, COLUMN_MOVIETITLE, COLUMN_MOVIEGENRE, COLUMN_MOVIEYEAR, COLUMN_MOVIERATING };
         String condition = COLUMN_MOVIERATING + " Like ?";
-        String[] args = { "%" +  result + "%"};
+        String[] args = {result};
         Cursor cursor = db.query(TABLE_MOVIES, columns, condition, args,
                 null, null, null, null);
 
