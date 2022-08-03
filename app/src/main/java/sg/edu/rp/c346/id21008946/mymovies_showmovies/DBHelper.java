@@ -95,13 +95,13 @@ public class DBHelper extends SQLiteOpenHelper {
         return movies;
     }
 
-    public ArrayList<Movies> getAllMovies(String result) {
+    public ArrayList<Movies> getAllPG13Movies() {
         ArrayList<Movies> movies = new ArrayList<Movies>();
 
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns= {COLUMN_ID, COLUMN_MOVIETITLE, COLUMN_MOVIEGENRE, COLUMN_MOVIEYEAR, COLUMN_MOVIERATING };
         String condition = COLUMN_MOVIERATING + " Like ?";
-        String[] args = {result};
+        String[] args = { "%" +  "PG13" + "%"};
         Cursor cursor = db.query(TABLE_MOVIES, columns, condition, args,
                 null, null, null, null);
 
