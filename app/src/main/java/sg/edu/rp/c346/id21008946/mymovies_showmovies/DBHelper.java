@@ -95,31 +95,31 @@ public class DBHelper extends SQLiteOpenHelper {
         return movies;
     }
 
-    public ArrayList<Movies> getAllPG13Movies() {
-        ArrayList<Movies> movies = new ArrayList<Movies>();
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns= {COLUMN_ID, COLUMN_MOVIETITLE, COLUMN_MOVIEGENRE, COLUMN_MOVIEYEAR, COLUMN_MOVIERATING };
-        String condition = COLUMN_MOVIERATING + " Like ?";
-        String[] args = { "%" +  "PG13" + "%"};
-        Cursor cursor = db.query(TABLE_MOVIES, columns, condition, args,
-                null, null, null, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                int id = cursor.getInt(0);
-                String title = cursor.getString(1);
-                String genre = cursor.getString(2);
-                int year = cursor.getInt(3);
-                String rating = cursor.getString(4);
-                Movies movie = new Movies(id,title,genre,year,rating);
-                movies.add(movie);
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        db.close();
-        return movies;
-    }
+//    public ArrayList<Song> getAllSongsWith5Stars() {
+//        ArrayList<Song> songs = new ArrayList<Song>();
+//
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        String[] columns= {COLUMN_ID, COLUMN_TITLE, COLUMN_SINGERS, COLUMN_YEAR, COLUMN_STARS };
+//        String condition = COLUMN_STARS + " Like ?";
+//        String[] args = { "%" +  5 + "%"};
+//        Cursor cursor = db.query(TABLE_SONGS, columns, condition, args,
+//                null, null, null, null);
+//
+//        if (cursor.moveToFirst()) {
+//            do {
+//                int id = cursor.getInt(0);
+//                String title = cursor.getString(1);
+//                String singers = cursor.getString(2);
+//                int year = cursor.getInt(3);
+//                int stars = cursor.getInt(4);
+//                Song song = new Song(id,title, singers, year, stars);
+//                songs.add(song);
+//            } while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//        db.close();
+//        return songs;
+//    }
 //
 //    public ArrayList<Song> getAllSongsBasedOnYear( int yearFilter ) {
 //        ArrayList<Song> songs = new ArrayList<Song>();

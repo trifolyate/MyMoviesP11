@@ -11,16 +11,14 @@
         android:id="@+id/textViewMovieID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Movie ID"
-        />
+        android:text="Movie ID" />
 
     <EditText
         android:id="@+id/editTextMovieID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:enabled="false"/>
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textViewMovieTitle"
@@ -59,9 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:digits="1234567890"
-        android:maxLength="4"
-        android:inputType="number" />
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/textViewMovieRating"
@@ -72,8 +68,7 @@
     <Spinner
         android:id="@+id/spinnerMovieRating"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/spinnerItems"/>
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
